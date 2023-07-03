@@ -1,4 +1,5 @@
-const express = require('express');
+import express from 'express'
+import { findAllPlanets } from './handleRoutes.js'
 
 const port = 3000;
 const app = express();
@@ -6,7 +7,9 @@ const app = express();
 app.use(express.json()); //Parse JSON body 
 
 app.get("/planets", function (req, res) {
-    console.log('Fake data not in mongodb')
+    findAllPlanets((planets) => {
+        res.status(200).send(planets);
+    })
 });
 
 
