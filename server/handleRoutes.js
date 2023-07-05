@@ -37,6 +37,22 @@ export function findPlanetCharacters(planetID, callback) {
     });
 };
 
+// Find films by planet
+export function findPlanetFilms(planetID, callback) {
+    let dataPromise = db.collection("films_planets").find({}).toArray();
+    dataPromise.then((films) => {
+        callback(films.filter(f => f.planet_id === planetID));
+    });
+};
+
+// Find films by character
+export function findCharacterFilms(characterID, callback) {
+    let dataPromise = db.collection("films_characters").find({}).toArray();
+    dataPromise.then((films) => {
+        callback(films.filter(f => f.character_id === characterID));
+    });
+};
+
 // Find all characters
 export function findAllCharacters(callback) {
     let dataPromise = db.collection("characters").find({}).toArray();

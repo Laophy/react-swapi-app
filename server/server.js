@@ -63,15 +63,21 @@ app.get("/api/films/:id/planets", function (req, res) {
 });
 
 app.get("/api/characters/:id/films", function (req, res) {
-    res.status(200).send({});
+    const characterID = parseInt(req.params.id);
+    Routes.findCharacterFilms(characterID, (films) => {
+        if(films)
+            res.status(200).json(films);
+        else
+            res.status(403).json({ status: "failure", message: "Character ID not found!" });
+    })
 });
 
 app.get("/api/planets/:id/films", function (req, res) {
     const planetID = parseInt(req.params.id);
-    Routes.findPlanetFilms(planetID, (characters) => {
-        if(characters)
+    Routes.findPlanetFilms(planetID, (planets) => {
+        if(planets)
             // Maps the characters from planet data 
-            res.status(200).json(characters.filter(char => char.homeworld === planetID).map(character => ({ "id": character.id, "name": character.name })));
+            res.status(200).json(planets);
         else
             res.status(403).json({ status: "failure", message: "Planet ID not found!" });
     })
