@@ -14,7 +14,7 @@ app.get("/api/characters", function (req, res) {
 
 app.get("/api/films", function (req, res) {
     findAllPlanets((planets) => {
-        res.status(200).send(planets);
+        res.status(200).send({});
     })
 });
 
