@@ -8,12 +8,14 @@ app.use(express.json()); //Parse JSON body
 
 app.get("/api/characters", function (req, res) {
     Routes.findAllCharacters((characters) => {
-    res.status(200).send(characters);
+    res.status(200).json(characters);
     })
 });
 
 app.get("/api/films", function (req, res) {
-    res.status(200).send({});
+    Routes.findAllFilms((films) => {
+        res.status(200).json(films);
+    })
 });
 
 app.get("/api/planets", function (req, res) {
@@ -26,14 +28,20 @@ app.get("/api/characters/:id", function (req, res) {
     const characterID = parseInt(req.params.id);
     Routes.findOneCharacter(characterID, (character) => {
         if(character)
-            res.status(200).send(character);
+            res.status(200).json(character);
         else
-            res.status(403).send({status: "failure", message: "character id not found"});
+            res.status(403).json({status: "failure", message: "character id not found"});
     })
 });
 
 app.get("/api/films/:id", function (req, res) {
-    res.status(200).send({});
+    const filmID = parseInt(req.params.id);
+    Routes.findOneFilm(filmID, (film) => {
+        if(film)
+            res.status(200).json(film);
+        else
+            res.status(403).json({ status: "failure", message: "Film ID not found!" });
+    })
 });
 
 app.get("/api/planets/:id", function (req, res) {

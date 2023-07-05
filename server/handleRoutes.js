@@ -52,3 +52,19 @@ export function findOneCharacter(characterID, callback) {
         callback(characterData);
     });
 };
+
+// Find all characters
+export function findAllFilms(callback) {
+    let dataPromise = db.collection("films").find({}).toArray();
+    dataPromise.then((films) => callback(films));
+};
+
+
+// Find one character
+export function findOneFilm(filmID, callback) {
+    let dataPromise = db.collection("films").find({}).toArray();
+    dataPromise.then((films) => {
+        const filmData = films.find(film => film.id === filmID);
+        callback(filmData);
+    });
+};
