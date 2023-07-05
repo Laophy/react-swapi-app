@@ -33,7 +33,7 @@ export function findOnePlanet(planetID, callback) {
 export function findPlanetCharacters(planetID, callback) {
     let dataPromise = db.collection("characters").find({}).toArray();
     dataPromise.then((characters) => {
-        callback(characters);
+        callback(characters.filter(char => char.homeworld === planetID));
     });
 };
 
@@ -45,11 +45,27 @@ export function findPlanetFilms(planetID, callback) {
     });
 };
 
-// Find films by character
+// Find films by character id
 export function findCharacterFilms(characterID, callback) {
     let dataPromise = db.collection("films_characters").find({}).toArray();
     dataPromise.then((films) => {
         callback(films.filter(f => f.character_id === characterID));
+    });
+};
+
+// Find film characters by film id
+export function findFilmCharacters(filmID, callback) {
+    let dataPromise = db.collection("films_characters").find({}).toArray();
+    dataPromise.then((films) => {
+        callback(films.filter(f => f.film_id === filmID));
+    });
+};
+
+// Find film planets by film id
+export function findFilmPlanets(filmID, callback) {
+    let dataPromise = db.collection("films_planets").find({}).toArray();
+    dataPromise.then((films) => {
+        callback(films.filter(f => f.film_id === filmID));
     });
 };
 
@@ -58,7 +74,6 @@ export function findAllCharacters(callback) {
     let dataPromise = db.collection("characters").find({}).toArray();
     dataPromise.then((characters) => callback(characters));
 };
-
 
 // Find one character
 export function findOneCharacter(characterID, callback) {
