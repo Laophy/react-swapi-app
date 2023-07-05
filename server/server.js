@@ -1,10 +1,14 @@
 import express from 'express'
+import cors from 'cors'
 import * as Routes from './handleRoutes.js'
 
-const port = 3000;
+const port = 4000;
 const app = express();
 
 app.use(express.json()); //Parse JSON body 
+app.use(cors({
+    origin: ['http://localhost:3000', 'http://localhost:4000']
+}))
 
 app.get("/api/characters", function (req, res) {
     Routes.findAllCharacters((characters) => {

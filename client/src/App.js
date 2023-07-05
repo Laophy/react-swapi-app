@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { Characters } from './components/Characters'
+import { Character } from './components/Character'
+import { Route, Routes, Navigate, Link } from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <nav>
+          <h1>Star Wars Application</h1>
+        </nav>
       </header>
+      <main>
+        <Routes>
+          <Route path="" element={<Characters />} />
+          <Route path="/character/:id" element={<Character />} />
+        </Routes>
+      </main>
+      <footer>
+        <p>Jordan, Jason - Group Project 2</p>
+      </footer>
     </div>
   );
 }
