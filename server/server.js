@@ -7,7 +7,9 @@ const app = express();
 app.use(express.json()); //Parse JSON body 
 
 app.get("/api/characters", function (req, res) {
-    res.status(200).send({});
+    Routes.findAllCharacters((characters) => {
+    res.status(200).send(characters);
+    })
 });
 
 app.get("/api/films", function (req, res) {
@@ -21,7 +23,13 @@ app.get("/api/planets", function (req, res) {
 });
 
 app.get("/api/characters/:id", function (req, res) {
-    res.status(200).send({});
+    const characterID = parseInt(req.params.id);
+    Routes.findOneCharacter(characterID, (character) => {
+        if(character)
+            res.status(200).send(character);
+        else
+            res.status(403).send({status: "failure", message: "character id not found"});
+    })
 });
 
 app.get("/api/films/:id", function (req, res) {

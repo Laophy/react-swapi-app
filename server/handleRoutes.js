@@ -15,13 +15,13 @@ async function startup() {
 startup();
 
 // retrieve all planets
-export function findAllPlanets (callback) {
+export function findAllPlanets(callback) {
     let dataPromise = collection.find({}).toArray();
     dataPromise.then((planets) => callback(planets));
 };
 
 // Find one planet
-export function findOnePlanet (planetID, callback) {
+export function findOnePlanet(planetID, callback) {
     let dataPromise = collection.find({}).toArray();
     dataPromise.then((planets) => {
         const planetData = planets.find(planet => planet.id === planetID);
@@ -30,9 +30,25 @@ export function findOnePlanet (planetID, callback) {
 };
 
 // Find planet characters by id
-export function findPlanetCharacters (planetID, callback) {
+export function findPlanetCharacters(planetID, callback) {
     let dataPromise = db.collection("characters").find({}).toArray();
     dataPromise.then((characters) => {
         callback(characters);
+    });
+};
+
+// Find all characters
+export function findAllCharacters(callback) {
+    let dataPromise = db.collection("characters").find({}).toArray();
+    dataPromise.then((characters) => callback(characters));
+};
+
+
+// Find one character
+export function findOneCharacter(characterID, callback) {
+    let dataPromise = collection.find({}).toArray();
+    dataPromise.then((characters) => {
+        const characterData = characters.find(character => character.id === characterID);
+        callback(characterData);
     });
 };
