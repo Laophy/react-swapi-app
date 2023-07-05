@@ -46,7 +46,7 @@ export function findAllCharacters(callback) {
 
 // Find one character
 export function findOneCharacter(characterID, callback) {
-    let dataPromise = collection.find({}).toArray();
+    let dataPromise = db.collection("characters").find({}).toArray();
     dataPromise.then((characters) => {
         const characterData = characters.find(character => character.id === characterID);
         callback(characterData);
