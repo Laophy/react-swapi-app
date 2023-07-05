@@ -25,14 +25,14 @@ export function Character() {
 
     return (
         <>
-            <h1>{character.name}</h1>
-            <div>Homeworld: <Link to={`/planet/${character?.homeworld}`}>{planet?.name}</Link></div>
+            <h1>{character?.name}</h1>
+            <div><strong>Homeworld</strong>: <Link to={`/planet/${character?.homeworld}`} style={{ textDecoration: 'none', color: 'black' }}>{planet?.name}</Link></div>
             <hr/>
             <div>
                 <h2>Films</h2>
                 {
                     films.map(film => {
-                        return <div key={film.id}><Link to={`/film/${film?.film_id}`} style={{ textDecoration: 'none', color: 'black' }}>{filmData.find(f => f.id === film.film_id).title}</Link></div>
+                        return <div key={film?.id}><Link to={`/film/${film?.film_id}`} style={{ textDecoration: 'none', color: 'black' }}>{filmData.find(f => f.id === film.film_id).title}</Link></div>
                     })
                 }
             </div>

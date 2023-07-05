@@ -21,6 +21,7 @@ export function Planet() {
                 <li>Diameter: {planet.diameter}</li>
                 <li>Rotation Period: {planet.rotation_period}</li>
                 <li>Gravity: {planet.gravity}</li>
+                <li>Surface Water: {planet.surface_water}</li>
                 <li>Orbital Period: {planet.orbital_period}</li>
                 <li>Population: {planet.population}</li>
             </ul>
