@@ -21,9 +21,9 @@ export function Character() {
 
     return (
         <>
-            <h1>{character.name}</h1>
-            <div><Link to={`/planet/${character.homeworld}`}>{planet.name}</Link></div>
-            <div><Link to={`/film/${film.character.id}`}>{film.id}</Link></div>
+            <h1>{character?.name}</h1>
+            <div><Link to={`/planet/${character?.homeworld}`}>{planet?.name}</Link></div>
+            <div><Link to={`/film/${film?.id}`}>{film?.title}</Link></div>
         </>
     )
 }
