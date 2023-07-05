@@ -2,6 +2,7 @@ import './App.css'
 import { Characters } from './components/Characters'
 import { Character } from './components/Character'
 import { Planet } from './components/Planet'
+import { Film } from './components/Film'
 import { Route, Routes, Navigate, Link } from 'react-router-dom'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="" element={<Characters />} />
           <Route path="/character/:id" element={<Character />} />
           <Route path="/planet/:id" element={<Planet />} />
+          <Route path="/film/:id" element={<Film />} />
         </Routes>
       </main>
       <footer>
