@@ -5,6 +5,8 @@ export function Film() {
     const [film, setFilm] = useState([]);
     const [planets, setPlanets] = useState([]);
     const [planetData, setPLanetData] = useState([]);
+    const [characters, setFilmCharacters] = useState([]);
+    const [allCharacters, setAllCharacters] = useState([]);
     const { id } = useParams();
 
     useEffect(() => {
@@ -14,8 +16,14 @@ export function Film() {
         fetch(`http://localhost:4000/api/films/${id}/planets`).then(res => res.json()).then((data) => {
             setPlanets(data)
         })
+        fetch(`http://localhost:4000/api/films/${id}/characters`).then(res => res.json()).then((data) => {
+            setFilmCharacters(data)
+        })
         fetch(`http://localhost:4000/api/planets`).then(res => res.json()).then((data) => {
             setPLanetData(data)
+        })
+        fetch(`http://localhost:4000/api/characters`).then(res => res.json()).then((data) => {
+            setAllCharacters(data)
         })
     }, [])
 
@@ -29,7 +37,7 @@ export function Film() {
                 <li>Director: {film.director}</li>
                 <li>Release Date: {film.release_date}</li>
                 <li>Planets: <ul>{ planets.map(p => <li><Link to={`/planet/${planetData.find(pl => pl.id === p.planet_id)?.id}`} style={{ textDecoration: 'none', color: 'black' }}>{planetData.find(pl => pl.id === p.planet_id)?.name}</Link></li>) }</ul></li>
-                <li>Characters: {"Characters"}</li>
+                <li>Characters: {<ul>{ characters.map(c => <li><Link to={`/character/${allCharacters.find(ch => ch.id === c.character_id)?.id}`} style={{ textDecoration: 'none', color: 'black' }}>{allCharacters.find(ch => ch.id === c.character_id)?.name}</Link></li>) }</ul>}</li>
             </ul>
             </div>
         </>
