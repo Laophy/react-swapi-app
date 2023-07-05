@@ -20,7 +20,7 @@ export function Characters() {
             <h1>All Characters</h1>
             {
                 characters?.map(char => {
-                    return <div key={char.id}><Link to={`/character/${char.id}`}>{char.name}</Link></div>
+                    return <div key={char.id}><Link to={`/character/${char.id}`} style={{ textDecoration: 'none', color: 'black', float: 'left', display: 'block', margin: '10px' }}>{char.name}</Link></div>
                 })
             }
         </>

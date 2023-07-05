@@ -1,6 +1,7 @@
 import './App.css'
 import { Characters } from './components/Characters'
 import { Character } from './components/Character'
+import { Planet } from './components/Planet'
 import { Route, Routes, Navigate, Link } from 'react-router-dom'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="" element={<Characters />} />
           <Route path="/character/:id" element={<Character />} />
+          <Route path="/planet/:id" element={<Planet />} />
         </Routes>
       </main>
       <footer>

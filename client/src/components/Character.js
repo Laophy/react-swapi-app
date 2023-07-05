@@ -13,7 +13,7 @@ export function Character() {
 
     return (
         <>
-            <h1>Name: {character.name}</h1>
+            <h1>{character.name}</h1>
         </>
     )
 }
