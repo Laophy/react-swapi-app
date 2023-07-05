@@ -18,3 +18,12 @@ export function findAllPlanets (callback) {
     let dataPromise = collection.find({}).toArray();
     dataPromise.then((planets) => callback(planets));
 };
+
+// Find one planet
+export function findOnePlanet (planetID, callback) {
+    let dataPromise = collection.find({}).toArray();
+    dataPromise.then((planets) => {
+        const planetData = planets.find(planet => planet.id === planetID);
+        callback(planetData);
+    });
+};
