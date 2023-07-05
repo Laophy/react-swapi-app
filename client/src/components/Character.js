@@ -32,7 +32,7 @@ export function Character() {
                 <h2>Films</h2>
                 {
                     films.map(film => {
-                        return <div key={film?.id}><Link to={`/film/${film?.film_id}`} style={{ textDecoration: 'none', color: 'black' }}>{filmData.find(f => f.id === film.film_id).title}</Link></div>
+                        return <div key={film?.id}><Link to={`/film/${film?.film_id}`} style={{ textDecoration: 'none', color: 'black' }}>{filmData.find(f => f.id === film.film_id)?.title}</Link></div>
                     })
                 }
             </div>
