@@ -9,7 +9,7 @@ export function Planet() {
         fetch(`http://localhost:4000/api/planets/${id}`).then(res => res.json()).then((data) => {
             setPlanet(data)
         })
-    }, [id])
+    }, [])
 
     return (
         <>
