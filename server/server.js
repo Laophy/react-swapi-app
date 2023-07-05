@@ -10,6 +10,7 @@ app.use(cors({
     origin: ['http://localhost:3000', 'http://localhost:4000']
 }))
 
+
 app.get("/api/characters", function (req, res) {
     Routes.findAllCharacters((characters) => {
         res.status(200).json(characters);
@@ -108,6 +109,9 @@ app.get("/api/planets/:id/characters", function (req, res) {
             res.status(403).json({ status: "failure", message: "Planet ID not found!" });
     })
 });
+
+
+app.use(express.static('./public'))
 
 console.log("server starting on port: " + port);
 app.listen(port);
